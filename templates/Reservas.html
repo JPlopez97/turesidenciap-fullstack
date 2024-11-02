@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+   <head>
+      <!-- basic -->
+      <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <!-- mobile metas -->
+      <meta name="viewport" content="width=device-width, initial-scale=1">
+      <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+      <!-- site metas -->
+      <title>TuResidenciAPP</title>
+      <meta name="keywords" content="">
+      <meta name="description" content="">
+      <meta name="author" content="">
+      <!-- bootstrap css -->
+      <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+      <!-- style css -->
+      <link rel="stylesheet" href="/static/css/style.css">
+      <!-- Responsive-->
+      <link rel="stylesheet" href="/static/css/responsive.css">
+      <!-- fevicon -->
+      <link rel="icon" href="/static/images/fevicon.png" type="image/gif" />
+      <!-- Scrollbar Custom CSS -->
+      <link rel="stylesheet" href="/static/css/jquery.mCustomScrollbar.min.css">
+      <!-- Tweaks for older IEs-->
+      <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.css">
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancybox/2.1.5/jquery.fancybox.min.css" media="screen">
+      <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+   </head>
+   <!-- body -->
+   <body class="main-layout in_page">
+      <!-- header -->
+      <header>
+         <!-- header inner -->
+         <div class="header">
+            <div class="container">
+               <div class="row">
+                  <div class="col-md-12 col-sm-3 col logo_section">
+                     <div class="full">
+                        <div class="center-desk">
+                           <div class="logo">
+                              <a href="indexAdmin.html"><img src="/static/images/LOGOFINAL.png" alt="#" /></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-md-10 offset-md-1">
+                     <nav class="navigation navbar navbar-expand-md navbar-dark">
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse" id="navbarsExample04">
+                            <ul class="navbar-nav mr-auto">
+                                <li class="nav-item"><a class="nav-link" href="/templateIndexAdmin">Inicio</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/templateNosotros">Nosotros</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/templateAdministracion">Administracion</a></li>
+                                <li class="nav-item active"><a class="nav-link" href="/templateReservas">Reservas</a></li>
+                                <li class="nav-item"><a class="nav-link" href="/templateUsersTable"> Usuarios </a></li>
+                                <li class="nav-item"><a class="nav-link" href="/templateNotificaciones"> Notificaciones </a></li>
+                                <li class="nav-item"><a class="nav-link" href="/templateContacto">Contacto</a></li>
+                            </ul>
+                        </div>
+                    </nav>
+                  </div>
+               </div>
+            </div>
+         </div>
+     
+       
+         <div id="gallery" class="gallery">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="titlepage">
+                            <h2>Reservas</h2>
+                            <p>Zonas de recreación y diversión en familia, amigos y personas especiales</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4 col-sm-6">
+                        <div class="gallery_img">
+                            <figure><img src="/static/images/bbq.jfif" alt="Zona BBQ"/></figure>
+                            <h2>ZONA BBQ</h2>
+                            <p>Dispone 8 mesas para una capacidad de 32 personas sentadas.</p>
+                            <button class="info-button" data-info="bbq">Más Información</button>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4 col-sm-6">
+                        <div class="gallery_img">
+                            <figure><img src="/static/images/saloneventos.jfif" alt="Salón de Eventos"/></figure>
+                            <h2>SALÓN DE EVENTOS</h2>
+                            <p>Alquiler Salón de Eventos para compartir con familiares y amigos.</p>
+                            <button class="info-button" data-info="salon">Más Información</button>
+                        </div>
+                    </div>
+        
+                    <div class="col-md-4 col-sm-6">
+                        <div class="gallery_img">
+                            <figure><img src="/static/images/cancha.jfif" alt="Cancha Sintética"/></figure>
+                            <h2>CANCHA SINTÉTICA</h2>
+                            <p>Alquiler para partidos, torneos, y campeonatos.</p>
+                            <button class="info-button" data-info="cancha">Más Información</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Modal -->
+        <div id="infoModal" class="modal hidden">
+            <div class="modal-content">
+                <span id="closeBtn" class="close">&times;</span>
+                <h2 id="modalTitle"></h2>
+                <p id="modalText"></p>
+            </div>
+        </div>
+        
+         
+        <div id="formularioReserva" class="hidden">
+            <form>
+                <h2 class="reservash2">Formulario de Reserva</h2>
+        
+                <label for="categoria"></label>
+            <select id="categoria" name="categoria" required>
+                <option value="">Selecciona una opción</option>
+                <option value="cancha">Cancha</option>
+                <option value="zona_bqq">Zona BBQ</option>
+                <option value="sala_eventos">Salón de Eventos</option>
+            </select>
+
+            <label for="nombre"></label>
+            <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
+
+            <label for="cedula"></label>
+            <input type="text" id="cedula" name="cedula" required placeholder="Ingresa tu cédula">
+
+            <label for="telefono"></label>
+            <input type="tel" id="telefono" name="telefono" required placeholder="Ingresa tu teléfono">
+
+            <label for="fecha"></label>
+            <input type="date" id="fecha" name="fecha" required>
+
+            <label for="hora"></label>
+            <input type="time" id="hora" name="hora" required>
+            <div class="reservabutton">
+                <button  type="submit">Enviar Reserva</button>
+                <p>La confirmación de la reserva y la hora disponible se le confirmará mediante un mensaje de texto.</p>
+            </div>
+    </form>
+        </div>
+      </div>
+   </header>
+
+    <div class="floating-button">
+        <img src="/static/images/pse.png" class="btn-pse" alt="pse" >
+    </div>
+
+   <footer>
+   <div class="copyright">
+      <div class="container">
+         <div class="row">
+            <div class="col-md-10 offset-md-1">
+               <p>© <span id="year"></span> All Rights Reserved. Design by<a> Tu ResidenciAPP </a></p>
+            </div>
+         </div>
+      </div>
+   </div>
+      </div>
+      </footer>
+      <!-- end footer -->
+      <!-- Javascript files-->
+      <script>
+        // Obtener el año actual
+        document.getElementById("year").textContent = new Date().getFullYear();
+     </script>
+      <script src="/static/js/jquery.min.js"></script>
+      <script src="/static/js/bootstrap.bundle.min.js"></script>
+      <script src="/static/js/jquery-3.0.0.min.js"></script>
+      <!-- sidebar -->
+      <script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
+      <script src="/static/js/custom.js"></script>
+      <script src="/static/js/reserva.js"></script>
+      <script>
+       const infoData = {
+        bbq: {
+            title: "ZONA BBQ",
+            text: `
+                <strong>Descripción:</strong> La Zona BBQ está diseñada para disfrutar de deliciosas parrilladas al aire libre. Cuenta con 8 mesas, cada una con capacidad para 4 personas, lo que permite acomodar hasta 32 personas sentadas. Disfrute de un entorno natural y fresco, ideal para celebraciones familiares y reuniones con amigos.<br>
+                <strong>Reglas:</strong> 
+                <ul>
+                    <li>No se permiten fuegos artificiales ni música a alto volumen para asegurar una experiencia agradable para todos.</li>
+                    <li>Los visitantes deben mantener el área limpia y llevarse su basura.</li>
+                </ul>
+                <strong>Requisitos:</strong> Reservación con al menos 48 horas de anticipación para garantizar la disponibilidad.<br>
+                <strong>Entrega:</strong> Se proporcionan mesas, sillas y parrillas. Los utensilios de cocina no están incluidos, por lo que se recomienda traer lo necesario.<br>
+                <strong>Precio:</strong> $100 por 4 horas. Se puede extender el tiempo por $25 adicionales por hora.
+            `
+        },
+        salon: {
+            title: "SALÓN DE EVENTOS",
+            text: `
+                <strong>Descripción:</strong> El Salón de Eventos es un espacio versátil ideal para celebraciones, reuniones y eventos corporativos. Equipado con mesas, sillas y un sistema de sonido básico, puede acomodar hasta 50 personas. El ambiente es elegante y cómodo, perfecto para crear recuerdos inolvidables con amigos y familiares.<br>
+                <strong>Reglas:</strong>
+                <ul>
+                    <li>Prohibido el uso de confeti y decoración que pueda dañar las paredes o el mobiliario.</li>
+                    <li>Se debe respetar el horario de uso acordado para evitar inconvenientes con otros usuarios.</li>
+                </ul>
+                <strong>Requisitos:</strong> Un depósito del 20% al momento de la reservación. La cantidad restante debe ser pagada 48 horas antes del evento.<br>
+                <strong>Entrega:</strong> Se proporcionan mesas, sillas, y acceso a un proyector y sistema de sonido básico.<br>
+                <strong>Precio:</strong> $200 por 4 horas. Se puede extender el tiempo por $50 adicionales por hora.
+            `
+        },
+        cancha: {
+            title: "CANCHA SINTÉTICA",
+            text: `
+                <strong>Descripción:</strong> La Cancha Sintética está diseñada para el disfrute de partidos de fútbol, torneos y entrenamientos. Ofrecemos un campo de alta calidad que cumple con los estándares profesionales, permitiendo una experiencia deportiva inigualable. Ideal para equipos de todas las edades y niveles de habilidad.<br>
+                <strong>Reglas:</strong>
+                <ul>
+                    <li>Uso obligatorio de calzado adecuado (botas de fútbol o zapatillas con suela de goma).</li>
+                    <li>Se debe mantener el respeto entre jugadores y árbitros durante los partidos.</li>
+                </ul>
+                <strong>Requisitos:</strong> Reservación con al menos 24 horas de anticipación para asegurar la disponibilidad.<br>
+                <strong>Entrega:</strong> Balones y acceso a vestuarios. Se recomienda traer su propia agua y equipo personal.<br>
+                <strong>Precio:</strong> $150 por 2 horas. Se puede extender el tiempo por $30 adicionales por hora.
+            `
+        }
+    };
+
+    // Abre el modal con la información correspondiente
+    const openModal = (infoKey) => {
+        const modal = document.getElementById('infoModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalText = document.getElementById('modalText');
+
+        modalTitle.textContent = infoData[infoKey].title;
+        modalText.innerHTML = infoData[infoKey].text; // Usar innerHTML para permitir formato
+        modal.style.display = 'block'; // Muestra el modal
+    };
+
+    // Agrega eventos a los botones
+    document.querySelectorAll('.info-button').forEach(button => {
+        button.addEventListener('click', () => {
+            const infoKey = button.getAttribute('data-info');
+            openModal(infoKey);
+        });
+    });
+
+    // Cerrar el modal
+    document.getElementById('closeBtn').addEventListener('click', () => {
+        document.getElementById('infoModal').style.display = 'none'; // Oculta el modal
+    });
+
+    // Cerrar el modal si se hace clic fuera del contenido
+    window.addEventListener('click', (event) => {
+        const modal = document.getElementById('infoModal');
+        if (event.target === modal) {
+            modal.style.display = 'none'; // Oculta el modal
+        }
+    });
+     </script>
+   </body>
+</html>

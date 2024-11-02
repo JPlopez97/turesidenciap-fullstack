@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/styleLogin.css">
+    <title>Iniciar Sesión</title>
+</head>
+<body>
+    <div class="container-form register">
+        <div class="information">
+            <div class="info-childs">
+                <img src="/static/images/LOGOFINAL.png" alt="logo">
+            </div>
+        </div>
+        <div class="form-information">
+            <div class="form-information-childs">
+                <h2>Iniciar Sesión</h2><br>
+                {% if error %}
+                <div class="alert alert-danger">
+                  {{ error }}
+                </div>
+                {% endif %}
+                <form class="form form-login" method="post" action="/login" novalidate>
+                    <div>
+                        <label >
+                            <i class='bx bx-user' ></i>
+                            <input type="email" placeholder="Usuario" name="username">
+                        </label>
+                    </div>
+                    <div>
+                        <label>
+                            <i class='bx bx-lock-alt' ></i>
+                            <input type="password" placeholder="Contraseña" name="password" id="password">
+                            <i class='bx bx-show' id="togglePassword" style="cursor: pointer;"></i>
+                        </label>
+                    </div>
+                    <input type="submit" value="Iniciar Sesión">
+                    <div class="alerta-error">Todos los campos son obligatorios</div>
+                </form>
+            </div>
+        </div>
+        
+        <a  href="https://wa.me/573018166976?text=Hola,%20quiero%20más%20información" target="_blank" class="btn btn-success btn-whatsapp"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAkCAYAAADhAJiYAAAAAXNSR0IArs4c6QAAAk1JREFUWEftV8FRAzEMtDohlUAqgVQCVEKoBKiEdCKyGetGliXLl+ORR27mJjM+x1qvVmuZyo09dGN4yh1QlpFNDDHzQynlqZSC31MNdiKi7yxw9H01oAripZTyOggKcAD1Q0THNeCmAVUgH5URGwMA8IIpvPrB+GGWtSlAzIy0fKkoCPIJFmwglcbHM0gwiecyn4jeMrZSQMyMRcGMPO8zC2NyBYeNCGvpf4eADDOrqBf0juaGoEJAdaFfVTm7jO7Rd2ZGulAIw42NAIFqaAfPXmulMofyllJPsZqiwH/dDbqATKoaiplZgELQ+xSJmmBYR+V1lhABgogh5mYnjsAb5mbAZRuKAEE7qIwjER2UQAWoDDXfJwGJhbhpiwBxXbyhVe1uCyBsVIqlY7gDZPSz08K1KaOzIc2wYucws2Sg05EHaDFCG/C/rEAx3XnSiCE3x4al1RqqDi4MTQHSOW5SpsQtJoehbtHMp/jskp5GMeYxNBSdOqN0CwKDhEBPSoNyAIPFxUANw7mGakAxvzAlQV+EHkjcXQgNvcwriqjsl3MnsvggfV7RWS8bbjYCpNPmWryOPOgiR07vuvzM4Tp9ZlVg0jU2vbWxjHDNESD3+LjGCI0uu+5BrzkCFJbmGlBOLz6UQKShzq2VTsqKFlb7FfaRGmnaftQOrytlr8lXGsL8Z3MDSYvDNUZj7TY7ctWZHce8xTRnUp05tbjtkiaVOsuAjhdekzJQ0eEKyhvL9xYyZY5yv1yhZy+F3ppX9TPZLrd8vwPK2Ls5hv4A+4ltNJcL4GQAAAAASUVORK5CYII="/></a>
+        
+    </div>
+
+    
+
+    <script>
+        // Seleccionar el campo de la contraseña y el ícono para mostrar/ocultar
+        const passwordInput = document.getElementById('password');
+        const togglePassword = document.getElementById('togglePassword');
+
+        // Agregar el evento de clic para cambiar entre mostrar/ocultar
+        togglePassword.addEventListener('click', function () {
+            // Verificar el tipo del input
+            const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
+            
+            // Cambiar el tipo de 'password' a 'text' o viceversa
+            passwordInput.setAttribute('type', type);
+            
+            // Cambiar el ícono si la contraseña se está mostrando o no
+            this.classList.toggle('bx-show');
+            this.classList.toggle('bx-hide');
+        });
+    </script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script src="/static/jsLogin/script.js"></script>
+    <script src="/static/jsLogin/register.js"></script>
+    <script src="/static/jsLogin/login.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha384-IQsoLXl5PILFhosVNubq5LC7Qb9DXgDA9i+tQ8Zj3iwWAwPtgFTxbJ8NT4GN1R8p" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.min.js" integrity="sha384-cVKIPhGWiC2Al4u+LWgxfKTRIcfu0JTxR+EQDz/bgldoEyl4H0zUF0QKbrJ0EcQF" crossorigin="anonymous"></script>
+</body>
+</html>

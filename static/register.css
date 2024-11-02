@@ -1,0 +1,107 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Quicksand", sans-serif;
+}
+  
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #eaf7c5;
+}
+
+.register-form {
+    position: relative;
+    background: #68d647;
+    z-index: 1000;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
+}
+
+.register-form legend {
+    text-align: center;
+}
+
+.residentDepartments {
+    position: relative;
+    background: #68d647;
+    z-index: 1000;
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
+}
+
+.alert {
+    margin: auto;
+    padding: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+}
+  
+.alert-error {
+    color: #e20e0e;
+}
+
+.alert-success {
+    color: #000;
+}
+
+.residentDepartments {
+    position: relative;
+    background: #68d647;
+    z-index: 1000;
+    display: grid;
+    align-items: center;
+    justify-content: left;
+    padding: 40px;
+    border-radius: 4px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 9);
+}
+
+.residentDepartments legend {
+    text-align: center;
+}
+
+.form-control input:focus ~ i,
+.form-control input:valid ~ i {
+  transform: translateY(-7.5px);
+  font-size: 0.85em;
+  color: #666464;
+}
+
+#SelectRol {
+    cursor: pointer;
+}
+
+button[type="submit"] {
+    background: rgb(53, 176, 224);
+}
+
+button[type="submit"]:active {
+    opacity: 0.6;
+  }
+
+.back-button {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background-color: #6c757d;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.back-button:hover {
+    background-color: #5a6268; /* Cambiar el color al hacer hover */
+}
