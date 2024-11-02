@@ -3,7 +3,7 @@ from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
 
 # Configuración de URL de conexión
-DATABASE_URL = "mysql+mysqlconnector://root:@localhost/turesidenciappresidenciapp_fullstack"
+DATABASE_URL = "mysql+mysqlconnector://root:@localhost/residenciapp_fullstack"
 
 # Motor de la base de datos
 engine = create_engine(DATABASE_URL, connect_args={"charset": "utf8mb4"})
