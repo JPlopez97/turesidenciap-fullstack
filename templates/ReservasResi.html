@@ -32,40 +32,9 @@
    <!-- body -->
    <body class="main-layout in_page">
       <!-- header -->
-      <header>
-         <!-- header inner -->
-         <div class="header">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12 col-sm-3 col logo_section">
-                     <div class="full">
-                        <div class="center-desk">
-                           <div class="logo">
-                              <a href="indexResidente.html"><img src="/static/images/LOGOFINAL.png" alt="#" /></a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-10 offset-md-1">
-                     <nav class="navigation navbar navbar-expand-md navbar-dark">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" style="margin-left: 12%;" id="navbarsExample04">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item"><a class="nav-link" href="/templateIndexResidente">Inicio</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/templateNosotrosResi">Nosotros</a></li>
-                                <li class="nav-item active"><a class="nav-link" href="/templateReservasResi">Reservas</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/templateNotificacionesResi">Notificaciones</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/templateContactoResi">Contacto</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                  </div>
-               </div>
-            </div>
-         </div>
-   </header>
+      
+      {% extends "base_Resi.html" %}
+      {% block content %}
        
          <div id="gallery" class="gallery">
             <div class="container">
@@ -83,7 +52,8 @@
                             <figure><img src="/static/images/bbq.jfif" alt="Zona BBQ"/></figure>
                             <h2>ZONA BBQ</h2>
                             <p>Dispone 8 mesas para una capacidad de 32 personas sentadas.</p>
-                            <button class="info-button" data-info="bbq">Más Información</button>
+                            <button class="info-button" data-info="bbq">Ver más</button>
+                            <button class="info-button" data-info="reserva">Reservar</button>
                         </div>
                     </div>
         
@@ -92,7 +62,8 @@
                             <figure><img src="/static/images/saloneventos.jfif" alt="Salón de Eventos"/></figure>
                             <h2>SALÓN DE EVENTOS</h2>
                             <p>Alquiler Salón de Eventos para compartir con familiares y amigos.</p>
-                            <button class="info-button" data-info="salon">Más Información</button>
+                            <button class="info-button" data-info="salon">Ver más</button>
+                            <button class="info-button" data-info="reserva">Reservar</button>
                         </div>
                     </div>
         
@@ -101,7 +72,8 @@
                             <figure><img src="/static/images/cancha.jfif" alt="Cancha Sintética"/></figure>
                             <h2>CANCHA SINTÉTICA</h2>
                             <p>Alquiler para partidos, torneos, y campeonatos.</p>
-                            <button class="info-button" data-info="cancha">Más Información</button>
+                            <button class="info-button" data-info="cancha">Ver más</button>
+                            <button class="info-button" data-info="reserva">Reservar</button>
                         </div>
                     </div>
                 </div>
@@ -117,28 +89,27 @@
             </div>
         </div>
         
-         <div id="formularioReserva" class="hidden">
-            <form>
+        <div id="ModalReserva" class="modal hidden">
+            <div class="modal-content">
+                <span id="closeBtnMR" class="close">&times;</span>
                 <h2>Formulario de Reserva</h2>
-    
-                <label for="categoria">Categoría:</label>
-                <select id="categoria" name="categoria" required>
-                    <option value="">Selecciona una opción</option>
-                    <option value="cancha">Cancha</option>
-                    <option value="zona_bqq">Zona BBQ</option>
-                    <option value="sala_eventos">Salón de Eventos</option>
-                </select>
-    
-                <label for="nombre">Nombre:</label>
-                <input type="text" id="nombre" name="nombre" required>
-    
-                <label for="fecha">Fecha:</label>
-                <input type="date" id="fecha" name="fecha" required>
-                <label for="hora">Hora:</label>
-                <input type="time" id="hora" name="hora" required>
-                <button type="submit">Enviar Reserva</button>
-                <p>La confirmacion de la reservas y la hora disponible se le confirmara mediante un mensaje de texto</p>
-            </form>
+                <form id="formularioReserva">
+                    <label for="categoria">Selecciona una opción</label>
+                    <select id="categoria" name="categoria" required>
+                        <option value="">Selecciona una opción</option>
+                        <option value="cancha">Cancha</option>
+                        <option value="zona_bqq">Zona BBQ</option>
+                        <option value="sala_eventos">Salón de Eventos</option>
+                    </select>
+                    <input type="text" id="nombre" name="nombre" required placeholder="Ingresa tu nombre">
+                    <input type="text" id="cedula" name="cedula" required placeholder="Ingresa tu cédula">
+                    <input type="tel" id="telefono" name="telefono" required placeholder="Ingresa tu teléfono">
+                    <input type="date" id="fecha" name="fecha" required>
+                    <input type="time" id="hora" name="hora" required>
+                    <button type="submit" class="mt-3">Reservar</button>
+                    <p>La confirmación de la reserva se le enviará mediante un mensaje de texto.</p>
+                </form>
+            </div>
         </div>
       </div>
 
@@ -146,18 +117,24 @@
         <img src="/static/images/pse.png" class="btn-pse" alt="pse" >
     </div>
 
-      <footer>
-    <div class="copyright">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-10 offset-md-1">
-                <p>© <span id="year"></span> All Rights Reserved. Design by <a> Tu ResidenciAPP </a></p>
+    <footer>
+        <div class="copyright">
+            <div class="container">
+                <div class="row align-items-center mr-5">
+                    <div class="col-md-8 text-left">
+                        <p style="font-weight: 600;">
+                            Copyright © <span id="year"></span> Todos los derechos reservados | Tu ResidenciAPP
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-right mt-4">
+                        <a href="/templatePoliticaDatos" style="font-weight: 600;">
+                            Política de Tratamiento de Datos
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-      </div>
-      </footer>
+    </footer>
       <!-- end footer -->
       <!-- Javascript files-->
       <script>
@@ -184,8 +161,7 @@
                 </ul>
                 <strong>Requisitos:</strong> Reservación con al menos 48 horas de anticipación para garantizar la disponibilidad.<br>
                 <strong>Entrega:</strong> Se proporcionan mesas, sillas y parrillas. Los utensilios de cocina no están incluidos, por lo que se recomienda traer lo necesario.<br>
-                <strong>Precio:</strong> $100 por 4 horas. Se puede extender el tiempo por $25 adicionales por hora.
-            `
+                <strong>Precio:</strong> $400.000 COP por 8 horas. Se puede extender el tiempo por $100,000 COP adicionales por hora.`
         },
         salon: {
             title: "SALÓN DE EVENTOS",
@@ -198,8 +174,7 @@
                 </ul>
                 <strong>Requisitos:</strong> Un depósito del 20% al momento de la reservación. La cantidad restante debe ser pagada 48 horas antes del evento.<br>
                 <strong>Entrega:</strong> Se proporcionan mesas, sillas, y acceso a un proyector y sistema de sonido básico.<br>
-                <strong>Precio:</strong> $200 por 4 horas. Se puede extender el tiempo por $50 adicionales por hora.
-            `
+                <strong>Precio:</strong> $500.000 COP por 8 horas. Se puede extender el tiempo por $200,000 COP adicionales por hora.`
         },
         cancha: {
             title: "CANCHA SINTÉTICA",
@@ -212,10 +187,10 @@
                 </ul>
                 <strong>Requisitos:</strong> Reservación con al menos 24 horas de anticipación para asegurar la disponibilidad.<br>
                 <strong>Entrega:</strong> Balones y acceso a vestuarios. Se recomienda traer su propia agua y equipo personal.<br>
-                <strong>Precio:</strong> $150 por 2 horas. Se puede extender el tiempo por $30 adicionales por hora.
-            `
+                <strong>Precio:</strong> $50.000 la hora en el día y de noche: $80.000. Se puede extender el tiempo por $120,000 COP adicionales por hora.`
         }
-    };
+};
+
 
     // Abre el modal con la información correspondiente
     const openModal = (infoKey) => {
@@ -248,6 +223,35 @@
             modal.style.display = 'none'; // Oculta el modal
         }
     });
+
+    // Función para abrir el modal de reserva
+    const openReservaModal = () => {
+        const modalReserva = document.getElementById('ModalReserva');
+
+        modalReserva.style.display = 'block';
+    };
+
+    // Función para cerrar el modal de reserva
+    const closeReservaModal = () => {
+        document.getElementById('ModalReserva').style.display = 'none';
+    };
+
+    // Controlador de eventos para los botones "Reservar"
+    document.querySelectorAll('button[data-info="reserva"]').forEach(button => {
+        button.addEventListener('click', openReservaModal);
+    });
+
+    // Cerrar el modal de reserva al hacer clic en la "X" o en el botón "Cancelar"
+    document.getElementById('closeBtnMR').addEventListener('click', closeReservaModal);
+
+    // Cerrar el modal si se hace clic fuera del contenido
+    window.addEventListener('click', (event) => {
+        const modalReserva = document.getElementById('ModalReserva');
+        if (event.target === modalReserva) {
+            modalReserva.style.display = 'none'; // Oculta el modal
+        }
+    });
      </script>
    </body>
 </html>
+{% endblock %}

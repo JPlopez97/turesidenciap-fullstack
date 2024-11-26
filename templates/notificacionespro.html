@@ -37,7 +37,7 @@
    <!-- body -->
    <body class="main-layout in_page">
     
-    {% extends "base_Resi.html" %}
+    {% extends "base_pro.html" %}
     {% block content %}
 
       <!-- end header inner -->
@@ -125,6 +125,7 @@
                         <span id="closeBtnMRI" class="close">&times;</span>
                         <div class="notification-details" id="incidencias" style="display:none;">
                             <form method="post" action="/sendWhatsappIncidenceResi">
+                                <label for="telefono">Selecciona un contacto:</label>
                                 <label for="mensaje">Describe el problema:</label>
                                 <textarea class="form-control" style="margin-left: 30px;" placeholder="Escribe aquí" name="mensaje" id="mensaje" required></textarea>
                                 <!-- <input type="file" class="form-control-file mt-2" accept="image/*"> -->

@@ -7,13 +7,13 @@ from fastapi.templating import Jinja2Templates  # Para trabajar con plantillas H
 from fastapi.staticfiles import StaticFiles # Para trabajar con los css, js, img, etc.
 
 
-router = APIRouter(tags=["getAvailableDepartments"], 
+availableApartmentTableRouter = APIRouter(tags=["getAvailableDepartments"], 
                    responses={404: {"message": "No encontrado"}})
 
 # Configuración Jinja2 para trabajar con templates HTML en la carpeta "templates"
 templates = Jinja2Templates(directory="templates")
 
-router.mount("/static", StaticFiles(directory="static"), name="static")
+availableApartmentTableRouter.mount("/static", StaticFiles(directory="static"), name="static")
 
 # Dependencia para obtener la sesión de base de datos
 def get_db():
@@ -26,13 +26,13 @@ def get_db():
         # Cerrar la sesión de base de datos al terminar el request
         db.close()
 
-@router.get("/getAvailableDepartments")
+@availableApartmentTableRouter.get("/getAvailableDepartments")
 async def get_department(request: Request, db: Session = Depends(get_db)):
     apartamentosdispo = db.query(Apartamento.num_apto, Apartamento.piso_apto, Apartamento.torre_apto).filter(Apartamento.estado_apto == 'disponible').all()
     
     # Si no se encuentran apartamentos
     if not apartamentosdispo:
-        return templates.TemplateResponse("apartamentos.html", {"request": request, "error": "No se encontraron usuarios"})
+        return templates.TemplateResponse("apartamentos.html", {"request": request, "error": "No se encontraron apartamentos", "active_page": request.url.path})
     
     # Retornar los apartamentos encontrados a la plantilla
-    return templates.TemplateResponse("apartamentos.html", {"request": request, "apartamentosdispo": apartamentosdispo})
+    return templates.TemplateResponse("apartamentos.html", {"request": request, "apartamentosdispo": apartamentosdispo, "active_page": "/templateUsersTable"})

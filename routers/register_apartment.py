@@ -6,7 +6,7 @@ from models import Apartamento  # Modelos de la base de datos
 from fastapi.templating import Jinja2Templates  # Para trabajar con plantillas HTML mediante Jinja2
 
 
-router = APIRouter(tags=["registerApartment"], 
+registerApartmentRouter = APIRouter(tags=["registerApartment"], 
                    responses={404: {"message": "No encontrado"}})
 
 # Configuración Jinja2 para trabajar con templates HTML en la carpeta "templates"
@@ -24,11 +24,11 @@ def get_db():
         db.close()  
 
 # Ruta para mostrar el formulario de registro de usuarios
-@router.get("/templateRegisterApartment", response_class=HTMLResponse)
+@registerApartmentRouter.get("/templateRegisterApartment", response_class=HTMLResponse)
 async def templateRegister(request: Request):
     return templates.TemplateResponse("registerApartment.html", {"request": request})
 
-@router.post("/register_apartment")
+@registerApartmentRouter.post("/register_apartment")
 async def register_apartment(
     request: Request,
     num_apto: int = Form(...),

@@ -7,7 +7,7 @@ from fastapi.templating import Jinja2Templates
 import pywhatkit as pwk
 from tempfile import NamedTemporaryFile
 
-router = APIRouter()
+sendWhatsappResiRouter = APIRouter()
 
 # Configuración de Jinja2 para trabajar con templates HTML en la carpeta "templates"
 templates = Jinja2Templates(directory="templates")
@@ -20,9 +20,9 @@ def get_db():
     finally:
         db.close()
 
-router = APIRouter()
+sendWhatsappResiRouter = APIRouter()
 
-@router.post("/sendWhatsappIncidenceResi")
+@sendWhatsappResiRouter.post("/sendWhatsappIncidenceResi")
 async def send_Whatsapp_Incidence(
     img: str = File(None),  # Parámetro img opcional para una imagen
     mensaje: str = Form(...),
@@ -37,8 +37,7 @@ async def send_Whatsapp_Incidence(
             pwk.sendwhatmsg_instantly(
                 phone_no = admin.telefono,
                 message = f"¡Hola, *{admin.nombre_usu}*! Te informamos que un residente ha reportado una nueva incidencia. \nDetalles de la incidencia: *{mensaje}*.",
-                wait_time=15,
-                tab_close=True
+                wait_time=15
             )
         # Si hay imagen, enviar el mensaje y la imagen
         """else:

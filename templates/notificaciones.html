@@ -28,46 +28,18 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <style>
+        html{
+            overflow-y: scroll;
+        }
+      </style>
    </head>
    <!-- body -->
    <body class="main-layout in_page">
     
-      <header>
-         <!-- header inner -->
-         <div class="header">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12 col-sm-3 col logo_section">
-                     <div class="full">
-                        <div class="center-desk">
-                           <div class="logo">
-                              <a href="indexAdmin.html"><img src="/static/images/LOGOFINAL.png" alt="#" /></a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-10 offset-md-1">
-                     <nav class="navigation navbar navbar-expand-md navbar-dark">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarsExample04">
-                            <ul class="navbar-nav mr-auto">
-                                <li class="nav-item"><a class="nav-link" href="/templateIndexAdmin">Inicio</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/templateNosotros">Nosotros</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/templateAdministracion">Administracion</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/templateReservas">Reservas</a></li>
-                                <li class="nav-item"><a class="nav-link" href="/templateUsersTable"> Usuarios </a></li>
-                                <li class="nav-item active"><a class="nav-link" href="/templateNotificaciones"> Notificaciones </a></li>
-                                <li class="nav-item"><a class="nav-link" href="/templateContacto">Contacto</a></li>
-                            </ul>
-                        </div>
-                    </nav>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </header>
+    {% extends "base.html" %}
+    {% block content %}
+
       <!-- end header inner -->
       <div class="notification-section">
         <div class="container">
@@ -82,7 +54,7 @@
                 <div class="col-md-3">
                     <div class="notification-box">
                         <img src="/static/images/calendario.png" alt="Eventos" class="notification-image">
-                        <h4>Eventos</h4>
+                        <h3 style="font-weight: bolder;">Eventos</h3>
                         <p>Consulta los próximos eventos programados en la comunidad.</p>
                         <button class="btn btn-primary" onclick="toggleCalendar()">Ver Eventos</button>
                         <div id="event-calendar" class="calendar" style="display:none;">
@@ -91,45 +63,82 @@
                                 <li>10/10/2024 - Reunión de Bienvenida</li>
                                 <li>15/10/2024 - Fiesta de Halloween</li>
                                 <li>20/10/2024 - Taller de Cocina</li>
-                            </ul><hr>
-                            <h5 style="font-weight: bold;">Crear Evento</h5>
-                            <form id="event-form" method="post" action="/sendWhatsappEvent">
-                                <label for="categoria" class="form-label" style="font-weight:600;">Seleccionar categoría de evento</label>
-                                <select name="categoriaEvento" id="categoria" class="form-control ml-2">
-                                    <option value="1">Social</option>
-                                    <option value="2">Administrativo</option>
-                                    <option value="3">Mantenimiento y Servicios</option>
-                                    <option value="4">Deportivos</option>
-                                    <option value="5">Culturales y Educativos</option>
-                                    <option value="6">Avisos Generales</option>
-                                </select>
-                                <input type="text" id="event-name" name="mensaje" class="form-control ml-2" placeholder="Nombre del evento" required>
-                                <input type="date" id="event-date" name="fecha" class="form-control mt-2 ml-2" required>
-                                <button type="submit" class="btn btn-success mt-2">Crear Evento</button>
-                            </form>
+                            </ul>
+                            <hr>
+                            <button type="button" class="btn btn-success mt-2 info-button" data-info="Evento" onclick="openModal()">Crear Evento</button>
                         </div>
                     </div>
                 </div>
+                
+                <!-- Modal for Viewing the Calendar -->
+                <div class="modal" id="calendarModal" tabindex="-1" aria-labelledby="calendarModalLabel" aria-hidden="true">
+                  <div class="modal-dialog">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="calendarModalLabel">Calendario de Eventos</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                      </div>
+                      <div class="modal-body">
+                        <!-- Calendar Display -->
+                        <div id="calendar" style="width:100%;"></div>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        <button type="button" class="btn btn-primary">Agregar Evento</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <!-- Modal de crear eventos -->
+                <div id="ModalCrearEvento" class="modal hidden">
+                    <div class="modal-content">
+                        <span id="closeBtnMCE" class="close">&times;</span>
+                        <h2>Formulario de Evento</h2>
+                        <form id="event-form" method="post" action="/sendWhatsappEvent">
+                            <label for="categoria" class="form-label" style="font-weight:600;">Seleccionar categoría de evento</label>
+                            <select name="categoriaEvento" id="categoria" class="form-control" style="margin-left: 30px;">
+                                <option value="1">Social</option>
+                                <option value="2">Administrativo</option>
+                                <option value="3">Mantenimiento y Servicios</option>
+                                <option value="4">Deportivos</option>
+                                <option value="5">Culturales y Educativos</option>
+                                <option value="6">Avisos Generales</option>
+                            </select>
+                            <input type="text" id="event-name" name="mensaje" class="form-control" placeholder="Nombre del evento" style="margin-left: 30px;" required>
+                            <input type="date" id="event-date" name="fecha" class="form-control" style="margin-left: 30px;" required>
+                            <button type="submit" class="btn btn-success mt-2" style="margin-left: 190px;" >Crear Evento</button>
+                        </form>
+                    </div>
+                </div>
     
-                <!-- Incidencias -->
+                <!-- Reporte de Incidencias -->
                 <div class="col-md-3">
                     <div class="notification-box">
                         <img src="/static/images/seguimiento.png" alt="Incidencias" class="notification-image">
-                        <h4>Incidencias</h4>
-                        <p>Reporta incidencias y adjunta fotos si es necesario.</p>
-                        <button class="btn btn-primary" onclick="toggleUpload('incidencias')">Reportar Incidencia</button>
+                        <h3 style="font-weight: bolder;">Reportar Problema</h3>
+                        <p>Informa sobre problemas o fallas. Puedes añadir fotos si lo necesitas.</p>
+                        <button class="btn btn-primary info-button" data-info="Incidencia" onclick="toggleUpload('incidencias')">Reportar Problema</button>
+                    </div>
+                </div>
+
+                <!-- Modal de reportar incidencia -->
+                <div id="ModalReportarIncidencia" class="modal hidden">
+                    <div class="modal-content">
+                        <span id="closeBtnMRI" class="close">&times;</span>
                         <div class="notification-details" id="incidencias" style="display:none;">
                             <form method="post" action="/sendWhatsappIncidence">
-                                <select name="telefono" id="" class="form-control ml-2">
+                                <label for="telefono">Selecciona un contacto:</label>
+                                <select name="telefono" id="telefono" class="form-control" style="margin-left: 30px;">
                                     {% for telefono in telefonos %}
                                     <option value="{{ telefono.telefono }}">
                                         {{ telefono.nombre_usu }} - {{ telefono.telefono }}
                                     </option>
                                     {% endfor %}
                                 </select>
-                                <textarea class="form-control ml-2" placeholder="Describe la incidencia" name="mensaje" required></textarea>
+                                <label for="mensaje">Describe el problema:</label>
+                                <textarea class="form-control" style="margin-left: 30px;" placeholder="Escribe aquí" name="mensaje" id="mensaje" required></textarea>
                                 <!-- <input type="file" class="form-control-file mt-2" accept="image/*"> -->
-                                <button type="submit" class="btn btn-success mt-2">Enviar Incidencia</button>
+                                <button type="submit" class="btn btn-success mt-2" style="margin-left: 190px;">Enviar Reporte</button>
                             </form>
                         </div>
                     </div>
@@ -139,18 +148,10 @@
                 <div class="col-md-3">
                     <div class="notification-box">
                         <img src="/static/images/grupo.png" alt="Foros" class="notification-image">
-                        <h4>Foros</h4>
-                        <p>Participa en discusiones y comparte tus opiniones en los foros comunitarios.</p>
-                        <button class="btn btn-primary" onclick="showForumTopics()">Ver Temas Vistos</button>
-                        <div id="forum-topics" class="forum-details" style="display:none;">
-                            <h5>Temas Vistos Recientemente</h5>
-                            <ul>
-                                <li>Cómo mejorar la convivencia</li>
-                                <li>Normas del club</li>
-                                <li>Actividades para el próximo mes</li>
-                            </ul>
-                            <a href="enlace_a_foro.html" class="btn btn-info">Ir a los Foros</a>
-                        </div>
+                        <h3 style="font-weight: bolder;">P.Q.R.S</h3>
+                        <p>Peticiones, Quejas, Reclamos y Sujerencias.</p>
+                        <button class="btn btn-primary" onclick="showForumTopics()">Más información</button>
+                        
                     </div>
                 </div>
     
@@ -158,21 +159,24 @@
                 <div class="col-md-3">
                     <div class="notification-box">
                         <img src="/static/images/reunion.png" alt="Reuniones" class="notification-image">
-                        <h4>Reuniones</h4>
+                        <h3 style="font-weight: bolder;">Reuniones</h3>
                         <p>Infórmate sobre las reuniones programadas y cómo participar.</p>
                         <button class="btn btn-primary" onclick="showMeetingsList()">Ver Reuniones</button>
-                        <div id="meetings-list" class="meeting-details" style="display:none;">
-                            <h5>Lista de Reuniones</h5>
-                            <ul id="meeting-items">
-                                <!-- Las reuniones se agregarán aquí -->
-                            </ul>
-                            <h5>Crear Reunión</h5>
+                        <button class="btn btn-primary info-button" data-info="Reunion" onclick="toggleUpload('Reunion')">Crear Reunión</button>
+                    </div>
+                </div>
+
+                <!-- Modal de Crear Reuniones -->
+                <div id="ModalCrearReunion" class="modal hidden">
+                    <div class="modal-content">
+                        <span id="closeBtnMCR" class="close">&times;</span>
+                            <h5 style="font-weight: bold;">Crear Reunión</h5>
                             <form id="meeting-form" onsubmit="createMeeting(event)">
-                                <input type="text" id="meeting-title" class="form-control ml-2" placeholder="Título de la reunión" required>
-                                <input type="date" id="meeting-date" class="form-control mt-2 ml-2" required>
-                                <input type="time" id="meeting-time" class="form-control mt-2 ml-2" required>
-                                <input type="url" id="meeting-link" class="form-control mt-2 ml-2" placeholder="Enlace de la reunión" required>
-                                <button type="submit" class="btn btn-success mt-2">Crear Reunión</button>
+                                <input type="text" id="meeting-title" class="form-control" style="margin-left: 30px;" placeholder="Título de la reunión" required>
+                                <input type="date" id="meeting-date" class="form-control" style="margin-left: 30px;" required>
+                                <input type="time" id="meeting-time" class="form-control" style="margin-left: 30px;" required>
+                                <input type="url" id="meeting-link" class="form-control" style="margin-left: 30px;" placeholder="Enlace de la reunión" required>
+                                <button type="submit" class="btn btn-success" style="margin-left: 190px;">Crear Reunión</button>
                             </form>
                         </div>
                     </div>
@@ -188,23 +192,115 @@
     
     
       <!-- end header -->
-      
-      <div class="copyright">
-        <div class="container">
-           <div class="row">
-              <div class="col-md-10 offset-md-1">
-                 <p>© <span id="year"></span> All Rights Reserved. Design by <a> TuResidenciAPP </a></p>
-              </div>
-           </div>
+      <footer>
+        <div class="copyright">
+            <div class="container">
+                <div class="row align-items-center mr-5">
+                    <div class="col-md-8 text-left">
+                        <p style="font-weight: 600;">
+                            Copyright © <span id="year"></span> Todos los derechos reservados | Tu ResidenciAPP
+                        </p>
+                    </div>
+                    <div class="col-md-4 text-right mt-4">
+                        <a href="/templatePoliticaDatos" style="font-weight: 600;">
+                            Política de Tratamiento de Datos
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
-     </div>
-         </div>
-      </footer>
+    </footer>
       <!-- end footer -->
       <!-- Javascript files-->
       <script>
         // Obtener el año actual
         document.getElementById("year").textContent = new Date().getFullYear();
+
+        // Función para abrir el modal de Evento
+        const openModalCrearEvento = () => {
+            const ModalCrearEvento = document.getElementById('ModalCrearEvento');
+
+            ModalCrearEvento.style.display = 'block';
+        };
+
+        // Función para cerrar el modal de Evento
+        const ModalCrearEvento = () => {
+            document.getElementById('ModalCrearEvento').style.display = 'none';
+        };
+
+        // Controlador de eventos para los botones "Evento"
+        document.querySelectorAll('button[data-info="Evento"]').forEach(button => {
+            button.addEventListener('click', openModalCrearEvento);
+        });
+
+        // Cerrar el modal de Evento al hacer clic en la "X" o en el botón "Cancelar"
+        document.getElementById('closeBtnMCE').addEventListener('click', ModalCrearEvento);
+
+        // Cerrar el modal si se hace clic fuera del contenido
+        window.addEventListener('click', (event) => {
+            const ModalCrearEvento = document.getElementById('ModalCrearEvento');
+            if (event.target === ModalCrearEvento) {
+                ModalCrearEvento.style.display = 'none'; // Oculta el modal
+            }
+        });
+
+
+        // Función para abrir el modal de incidencia
+        const openModalReportarIncidencia = () => {
+            const ModalReportarIncidencia = document.getElementById('ModalReportarIncidencia');
+
+            ModalReportarIncidencia.style.display = 'block';
+        };
+
+        // Función para cerrar el modal de incidencia
+        const ModalReportarIncidencia = () => {
+            document.getElementById('ModalReportarIncidencia').style.display = 'none';
+        };
+
+        // Controlador de incidencia para los botones "incidencia"
+        document.querySelectorAll('button[data-info="Incidencia"]').forEach(button => {
+            button.addEventListener('click', openModalReportarIncidencia);
+        });
+
+        // Cerrar el modal de incidencia al hacer clic en la "X" o en el botón "Cancelar"
+        document.getElementById('closeBtnMRI').addEventListener('click', ModalReportarIncidencia);
+
+        // Cerrar el modal si se hace clic fuera del contenido
+        window.addEventListener('click', (event) => {
+            const ModalReportarIncidencia = document.getElementById('ModalReportarIncidencia');
+            if (event.target === ModalReportarIncidencia) {
+                ModalReportarIncidencia.style.display = 'none'; // Oculta el modal
+            }
+        });
+
+
+        // Función para abrir el modal de reuniones
+        const openModalCrearReunion = () => {
+            const ModalCrearReunion = document.getElementById('ModalCrearReunion');
+
+            ModalCrearReunion.style.display = 'block';
+        };
+
+        // Función para cerrar el modal de reuniones
+        const ModalCrearReunion = () => {
+            document.getElementById('ModalCrearReunion').style.display = 'none';
+        };
+
+        // Controlador de reuniones para los botones "reuniones"
+        document.querySelectorAll('button[data-info="Reunion"]').forEach(button => {
+            button.addEventListener('click', openModalCrearReunion);
+        });
+
+        // Cerrar el modal de Evento al hacer clic en la "X" o en el botón "Cancelar"
+        document.getElementById('closeBtnMCR').addEventListener('click', ModalCrearReunion);
+
+        // Cerrar el modal si se hace clic fuera del contenido
+        window.addEventListener('click', (event) => {
+            const ModalCrearReunion = document.getElementById('ModalCrearReunion');
+            if (event.target === ModalCrearReunion) {
+                ModalCrearReunion.style.display = 'none'; // Oculta el modal
+            }
+        });
      </script>
       <script src="/static/js/jquery.min.js"></script>
       <script src="/static/js/bootstrap.bundle.min.js"></script>
@@ -212,5 +308,7 @@
       <!-- sidebar -->
       <script src="/static/js/jquery.mCustomScrollbar.concat.min.js"></script>
       <script src="/static/js/notificaciones.js"></script>
+      
    </body>
 </html>
+{% endblock %}

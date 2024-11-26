@@ -135,22 +135,60 @@ body {
   background-color: rgb(49, 158, 201);
 }
 
-.btn-whatsapp {
-  background-color: #2eac6d;
-  width: 63px;
-  height: 63px;
+/* Estilos para los botones flotantes */
+.social-buttons {
   position: fixed;
   bottom: 20px;
-  left: 20px; /* Cambiado de 'right' a 'left' */
+  left: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 1000;
+}
+
+.social-buttons a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
   border-radius: 50%;
-  padding: 13px;
-  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  color: #fff;
+  text-decoration: none;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 
-.btn-whatsapp:hover{
-  background-color: #25915b;
+.social-buttons a:hover {
+  transform: translateY(-5px);
+  opacity: 0.8;
 }
 
+.social-buttons .btn-whatsapp {
+  background-color: #25D366;  /* WhatsApp */
+}
+
+.social-buttons .btn-instagram {
+  background-color: #E4405F;  /* Instagram */
+}
+
+.social-buttons .btn-email {
+  background-color: #007BFF;  /* Correo */
+}
+
+.social-buttons .btn-info {
+  background-color: #17a2b8;  /* Quiénes Somos */
+}
+
+.social-buttons a i {
+  font-size: 24px;
+  color: white;
+}
+.btn-web i {
+  margin-right: 8px; /* Espaciado entre el ícono y el texto */
+  font-size: 20px;
+}
 /*PERSONALIZACION DE MIS ALERTAS Y MENSAJES */
 .form div .alerta {
   width: 290px;

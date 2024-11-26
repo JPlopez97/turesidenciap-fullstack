@@ -1,0 +1,60 @@
+<!-- templates/navbar.html -->
+ <!DOCTYPE html>
+ <html lang="en">
+ <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/styleNavbarAdmin.css">
+ </head>
+ <body>
+
+    <header>
+        <div class="header">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12 col-sm-3 col logo_section">
+                        <div class="full">
+                            <div class="center-desk">
+                                <div class="logo">
+                                    <a href="/"><img src="/static/images/LOGOFINAL.png" alt="#" /></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-10 offset-md-1">
+                        <nav class="navigation navbar navbar-expand-md navbar-dark">
+                            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div class="collapse navbar-collapse" id="navbarsExample04">
+                                <ul class="navbar-nav mr-auto">
+                                    <li class="nav-item {% if active_page == '/templateIndexadminPro' %}active{% endif %}">
+                                        <a class="nav-link" style="user-select: none;" href="/templateIndexadminPro">Inicio</a>
+                                    </li>
+                                    <li class="nav-item {% if active_page == '/templateNosotrospro' %}active{% endif %}">
+                                        <a class="nav-link" style="user-select: none;" href="/templateNosotrospro">Nosotros</a>
+                                    </li>
+                                    <li class="nav-item {% if active_page == '/templateAdministracion' %}active{% endif %}">
+                                        <a class="nav-link" style="user-select: none;" href="/templateAdministracionpro">Administración</a>
+                                    </li>
+                                    <li class="nav-item {% if active_page == '/templateReservaspro' %}active{% endif %}">
+                                        <a class="nav-link" style="user-select: none;" href="/templateReservaspro">Reservas</a>
+                                    </li>
+                                    <li class="nav-item {% if active_page == '/templateNotificacionespro' %}active{% endif %}">
+                                        <a class="nav-link" style="user-select: none;" href="/templateNotificacionespro">Notificaciones</a>
+                                    </li>
+                                    <li class="nav-item {% if active_page == '/templateContactopro' %}active{% endif %}">
+                                        <a class="nav-link" style="user-select: none;" href="/templateContactopro">Contacto</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+ </body>
+ </html>
+

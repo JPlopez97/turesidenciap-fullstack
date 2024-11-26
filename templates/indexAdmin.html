@@ -31,61 +31,23 @@
    </head>
    <!-- body -->
    <body class="main-layout">
-      <header>
-         <!-- header inner -->
-         <div class="header">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12 col-sm-3 col logo_section">
-                     <div class="full">
-                        <div class="center-desk">
-                           <div class="logo">
-                              <a href="indexAdmin.html"><img src="/static/images/LOGOFINAL.png" alt="#" /></a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-10 offset-md-1">
-                     <nav class="navigation navbar navbar-expand-md navbar-dark">
-                         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
-                             <span class="navbar-toggler-icon"></span>
-                         </button>
-                         <div class="collapse navbar-collapse" id="navbarsExample04">
-                             <ul class="navbar-nav mr-auto">
-                              <li class="nav-item active"><a class="nav-link" href="/templateIndexAdmin">Inicio</a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateNosotros">Nosotros</a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateAdministracion">Administracion</a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateReservas">Reservas</a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateUsersTable"> Usuarios </a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateNotificaciones"> Notificaciones </a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateContacto">Contacto</a></li>
-                             </ul>
-   
-                         </div>
-                     </nav>
-                 </div>
-                 
-               </div>
-            </div>
-         </div>
-      </header>
+      {% extends "base.html" %}
+{% block content %}
       <!-- end header inner -->
       
       <!-- end header -->
       <!-- banner -->
       
       <div class="combined-section">
-         <div class="info">
+         <div class="info mt-5">
              <div class="user-image">
                  <img src="/static/images/INICIOSESION.gif" alt="Usuario" id="userIcon">
              </div>
              <h2>Información del Usuario</h2>
-             <p><strong>Nombre y Apellidos:</strong> <span id="userName">Cargando...</span></p>
-             <p><strong>Correo:</strong> <span id="userEmail">Cargando...</span></p>
-             <p><strong>Teléfono:</strong> <span id="userPhone">Cargando...</span></p>
-             <p><strong>Apartamento:</strong> <span id="userApartment">Cargando...</span></p>
-             <p><strong>Torre:</strong> <span id="userTower">Cargando...</span></p>
-             <p><strong>Tipo de Ingreso:</strong> <span id="userType">Cargando...</span></p>
+             <p><strong>Nombre y Apellidos:</strong> <span>{{ user_name }}</span></p>
+             <p><strong>Correo:</strong> <span>{{ user_email }}</span></p>
+             <p><strong>Teléfono:</strong> <span>{{ user_phone }}</span></p>
+             <p><strong>Rol:</strong> <span>{{ user_role }}</span></p>
              <div class="buttons">
                  <button id="modifyProfile">Modificar Perfil</button>
                  <button id="logout">Cerrar Sesión</button>
@@ -122,18 +84,24 @@
          <img src="/static/images/pse.png" class="btn-pse" alt="pse" >
      </div>
 
-      <footer>
-            <div class="copyright">
-               <div class="container">
-                  <div class="row">
-                     <div class="col-md-10 offset-md-1">
-                        <p>© <span id="year"></span> All Rights Reserved. Design by <a> TuResidenciAPP </a></p>
-                     </div>
+     <footer>
+      <div class="copyright">
+          <div class="container">
+              <div class="row align-items-center mr-5">
+                  <div class="col-md-8 text-left">
+                      <p style="font-weight: 600;">
+                          Copyright © <span id="year"></span> Todos los derechos reservados | Tu ResidenciAPP
+                      </p>
                   </div>
-               </div>
-            </div>
-         </div>
-      </footer>
+                  <div class="col-md-4 text-right mt-4">
+                      <a href="/templatePoliticaDatos" style="font-weight: 600;">
+                          Política de Tratamiento de Datos
+                      </a>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </footer>
       <!-- end footer -->
       <!-- Javascript files-->
       <script>
@@ -149,3 +117,4 @@
       <script src="/static/js/color.js"></script>
    </body>
 </html>
+{% endblock %}

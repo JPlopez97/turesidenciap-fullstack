@@ -28,44 +28,19 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <style>
+         .dropdown .dropdown-menu a{
+             font-size: smaller;
+         }
+         .dropdown2 .dropdown-menu a{
+             font-size: smaller;
+         }
+      </style>
    </head>
    <body class="main-layout in_page">
       <!-- header -->
-      <header>
-         <div class="header">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-12 col-sm-3 col logo_section">
-                     <div class="full">
-                        <div class="center-desk">
-                           <div class="logo">
-                              <a href="indexAdmin.html"><img src="/static/images/LOGOFINAL.png" alt="#" /></a>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-                  <div class="col-md-10 offset-md-1">
-                     <nav class="navigation navbar navbar-expand-md navbar-dark">
-                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample04">
-                           <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse" id="navbarsExample04">
-                           <ul class="navbar-nav mr-auto">
-                              <li class="nav-item"><a class="nav-link" href="/templateIndexAdmin">Inicio</a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateNosotros">Nosotros</a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateAdministracion">Administracion</a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateReservas">Reservas</a></li>
-                              <li class="nav-item active"><a class="nav-link" href="/templateUsersTable">Usuarios</a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateNotificaciones">Notificaciones</a></li>
-                              <li class="nav-item"><a class="nav-link" href="/templateContacto">Contacto</a></li>
-                           </ul>
-                        </div>
-                     </nav>
-                  </div>
-               </div>
-            </div>
-         </div>
-      </header>
+   {% extends "base.html" %}
+   {% block content %}
       <!-- end header -->
 
       <!-- main content -->
@@ -83,6 +58,7 @@
                         Gestionar Usuarios
                     </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                     <a class="dropdown-item" href="/templateUsersTable">Ver usuarios</a>
                         <a class="dropdown-item" href="/templateRegister">Registrar usuario</a>
                         <a class="dropdown-item" href="/templateApartmentsDispo">Asignar apartamento</a>
                     </div>
@@ -148,14 +124,21 @@
 
       <!-- footer -->
       <footer>
-        <div class="copyright">
-            <div class="container">
-               <div class="row">
-                  <div class="col-md-10 offset-md-1">
-                     <p>© <span id="year"></span> All Rights Reserved. Design by <a> TuResidenciAPP </a></p>
-                  </div>
-               </div>
-            </div>
+         <div class="copyright">
+             <div class="container">
+                 <div class="row align-items-center mr-5">
+                     <div class="col-md-8 text-left">
+                         <p style="font-weight: 600;">
+                             Copyright © <span id="year"></span> Todos los derechos reservados | Tu ResidenciAPP
+                         </p>
+                     </div>
+                     <div class="col-md-4 text-right mt-4">
+                         <a href="/templatePoliticaDatos" style="font-weight: 600;">
+                             Política de Tratamiento de Datos
+                         </a>
+                     </div>
+                 </div>
+             </div>
          </div>
      </footer>
 
@@ -229,3 +212,4 @@
       <script src="/static/js/bootstrap.bundle.min.js"></script>
    </body>
 </html>
+{% endblock %}

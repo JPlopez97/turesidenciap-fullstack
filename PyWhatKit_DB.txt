@@ -113,3 +113,53 @@ Time: 19:59
 Phone Number: +573214747765
 Message: ¡Hola, *Fede*! Te informamos que un residente ha reportado una nueva incidencia. Detalles de la incidencia: *kufg*.
 --------------------
+Date: 8/11/2024
+Time: 18:11
+Phone Number: +573214747765
+Message: ¡Hola, *Fede*! Queremos informarte de una incidencia que te concierne. Detalles de la incidencia: *Se daño piscina*. Por favor, no dudes en contactarnos si necesitas más información.
+--------------------
+Date: 8/11/2024
+Time: 18:13
+Phone Number: +573214747765
+Message: ¡Hola, *Fede*! Queremos informarte de una incidencia que te concierne. Detalles de la incidencia: *Se daño piscina*. Por favor, no dudes en contactarnos si necesitas más información.
+--------------------
+Date: 8/11/2024
+Time: 18:29
+Phone Number: +573214747765
+Message: ¡Hola, *Fede*! Queremos informarte de una incidencia que te concierne. Detalles de la incidencia: *ffjgj*. Por favor, no dudes en contactarnos si necesitas más información.
+--------------------
+Date: 17/11/2024
+Time: 15:49
+Phone Number: +573214747765
+Message: ¡Hola, *Fede*! Te recordamos que próximamente se realizará una reunión administrativa en el conjunto el día *2024-11-29*. Detalles de la reunión: *reunion admins*. Tu participación es importante.
+--------------------
+Date: 17/11/2024
+Time: 15:51
+Phone Number: +573214747765
+Message: ¡Hola, *Fede*! Nos complace invitarte a un evento social que se llevará a cabo en nuestro conjunto el día *2024-11-26*. Detalles del evento: *fgn*. ¡Esperamos contar con tu presencia!
+--------------------
+Date: 17/11/2024
+Time: 15:53
+Phone Number: +573214747765
+Message: ¡Hola, *Fede*! Nos complace invitarte a un evento social que se llevará a cabo en nuestro conjunto el día *2024-11-27*. Detalles del evento: *ghck*. ¡Esperamos contar con tu presencia!
+--------------------
+Date: 17/11/2024
+Time: 15:54
+Phone Number: +573214747765
+Message: ¡Hola, *Fede*! Nos complace invitarte a un evento social que se llevará a cabo en nuestro conjunto el día *2024-11-19*. Detalles del evento: *ftuyl*. ¡Esperamos contar con tu presencia!
+--------------------
+Date: 19/11/2024
+Time: 19:0
+Phone Number: +573214747765
+Message: ¡Hola, *Fede*! Nos complace invitarte a un evento social que se llevará a cabo en nuestro conjunto el día *2024-11-30*. Detalles del evento: *fiesta*. ¡Esperamos contar con tu presencia!
+--------------------
+Date: 19/11/2024
+Time: 19:0
+Phone Number: +573142353791
+Message: ¡Hola, *Juan Pablo*! Nos complace invitarte a un evento social que se llevará a cabo en nuestro conjunto el día *2024-11-30*. Detalles del evento: *fiesta*. ¡Esperamos contar con tu presencia!
+--------------------
+Date: 19/11/2024
+Time: 19:1
+Phone Number: +573214747765
+Message: ¡Hola, *Fede*! Queremos informarte de una incidencia que te concierne. Detalles de la incidencia: *sdthjdt*. Por favor, no dudes en contactarnos si necesitas más información.
+--------------------

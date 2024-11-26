@@ -19,7 +19,7 @@
       <!-- Responsive-->
       <link rel="stylesheet" href="/static/css/responsive.css">
       <!-- fevicon -->
-      <link rel="icon" href="/static/images/fevicon.png" type="image/gif" />
+      <link rel="icon" href="images/fevicon.png" type="image/gif" />
       <!-- Scrollbar Custom CSS -->
       <link rel="stylesheet" href="/static/css/jquery.mCustomScrollbar.min.css">
       <!-- Tweaks for older IEs-->
@@ -31,11 +31,13 @@
    </head>
    <!-- body -->
    <body class="main-layout">
+      {% extends "base_pro.html" %}
+{% block content %}
+      <!-- end header inner -->
       
-      {% extends "base_Resi.html" %}
-      {% block content %}
-
-      <!-- Banner -->
+      <!-- end header -->
+      <!-- banner -->
+      
       <div class="combined-section">
          <div class="info mt-5">
              <div class="user-image">
@@ -45,8 +47,6 @@
              <p><strong>Nombre y Apellidos:</strong> <span>{{ user_name }}</span></p>
              <p><strong>Correo:</strong> <span>{{ user_email }}</span></p>
              <p><strong>Teléfono:</strong> <span>{{ user_phone }}</span></p>
-             <p><strong>Apartamento:</strong> <span id="userApartment">{{user_apartment}}</span></p>
-             <p><strong>Torre:</strong> <span id="userTower">{{user_tower}}</span></p>
              <p><strong>Rol:</strong> <span>{{ user_role }}</span></p>
              <div class="buttons">
                  <button id="modifyProfile">Modificar Perfil</button>
@@ -59,6 +59,7 @@
                 </div>
             </div>
         </div>
+     
       <!-- end banner -->
       <!-- about -->
       <div id="about" class="about">
@@ -67,7 +68,7 @@
                <div class="col-md-5">
                   <div class="titlepage">
                      <h2>Tacuara Club Residencial</h2>
-                     <p>En los años recientes, hemos tenido el enorme privilegio de cumplir el sueño de más de 500 familias, que desde diferentes puntos del territorio nacional, así como desde el exterior, que ven en el Eje Cafetero, y en especial en el municipio de Dosquebradas, una oportunidad para brindar bienestar y felicidad a sus seres queridos, así como una inversión que se afianza en el tiempo</p>
+                     <p>En los años recientes, hemos tenido el enorme privilegio de cumplir el sueño de más de 500 familias, que desde diferentes puntos del territorio nacional, así como desde el exterior, que ven en el Eje Cafetero, y en especial en el municipio de Dosquebradas, una oportunidad para brindar bienestar y felicidad a sus seres queridos, así como una inversión que se afianza en el tiempo.</p>
                   </div>
                </div>
                <div class="col-md-7">

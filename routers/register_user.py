@@ -8,7 +8,7 @@ from fastapi.templating import Jinja2Templates  # Para trabajar con plantillas H
 from fastapi.staticfiles import StaticFiles # Para trabajar con los css, js, img, etc.
 
 
-router = APIRouter(tags=["registerUser"], 
+register_user_router = APIRouter(tags=["registerUser"], 
                    responses={404: {"message": "No encontrado"}})
 
 # Contexto de cifrado de contraseñas. Se usa el esquema 'bcrypt' para cifrar y verificar contraseñas.
@@ -33,11 +33,11 @@ def hash_password(password: str):
     return pwd_context.hash(password)
 
 # Ruta para mostrar el formulario de registro de usuarios
-@router.get("/templateRegister", response_class=HTMLResponse)
+@register_user_router.get("/templateRegister", response_class=HTMLResponse)
 async def templateRegister(request: Request):
     return templates.TemplateResponse("register.html", {"request": request})
 
-@router.post("/register_user")
+@register_user_router.post("/register_user")
 async def register_user(
     request: Request,
     cc_usuario: int = Form(...),

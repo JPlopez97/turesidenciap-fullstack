@@ -34,6 +34,20 @@
      box-sizing: border-box !important;
 }
 
+::-webkit-scrollbar {
+    width: 18px;
+}
+
+::-webkit-scrollbar-track {
+    background: #121212;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cce48a;
+    border-radius: 12px;
+    border: 3px solid #121212;
+}
+
 .container {
      max-width: 1170px;
 }
@@ -270,50 +284,6 @@ button {
 
 
 /*--------------------------------------------------------------------- top banner area ---------------------------------------------------------------------*/
-
-
-/*-- navigation--*/
-
-.navigation.navbar {
-     font-family: 'Open Sans', sans-serif;
-     left: 90px;
-     padding-top: 35px !important;
-     padding: 0;
-     
-}
-
-.navigation.navbar-dark .navbar-nav .nav-link {
-     color: #3986b9;
-     padding: 0;
-     margin: 0px 10px;
-     font-size: 15px;
-     line-height: 20px;
-     text-transform: uppercase;
-     width: 110%;
-}
-
-.navigation.navbar-dark .navbar-nav .nav-link:focus,
-.navigation.navbar-dark .navbar-nav .nav-link:hover {
-     color: #000000;
-}
-
-.navigation.navbar-dark .navbar-nav .active>.nav-link,
-.navigation.navbar-dark .navbar-nav .nav-link.active,
-.navigation.navbar-dark .navbar-nav .nav-link.show,
-.navigation.navbar-dark .navbar-nav .show>.nav-link {
-     color: #000000;
-}
-
-.navbar-expand-md .navbar-nav {
-     padding-right: 10px;
-}
-
-.header {
-     width: 100%;
-     padding: 35px 0px 35px 0px;
-     background: #eaf7c5;
-}
-
 .logo {
      text-align: center;
 }
@@ -617,16 +587,17 @@ button {
  button:hover {
      background-color: #45a049;
  }
+
+ #ModalReserva {
+    background-color: #eaf7c5;
+ }
  
  #formularioReserva {
     display: flex;
     flex-direction: column;
-    background-color: #eaf7c5;
     padding: 5px;
-    border: 1px solid #000000;
     border-radius: 2px;
     margin-top: 20px;
-    background: #eaf7c5;
 }
 
 .reservash2 {
@@ -1031,7 +1002,7 @@ input:focus, select:focus {
     }
 
     .btn-pse:hover {
-        background-color: #0d437c; /* Color al pasar el cursor */
+        background-color: #0c345e; /* Color al pasar el cursor */
     }
  
  /* Estilos para la sección de notificaciones */
@@ -1495,3 +1466,181 @@ button {
     border-color: #d84315; /* Color del borde cuando está seleccionado */
 }
 
+
+.btn-refresh:hover {
+    background-color: #218838;
+}
+
+.filter-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.filter-container select,
+.filter-container input {
+    width: 48%;
+    margin-bottom: 10px;
+    padding: 3px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+}
+
+.filter-container select {
+    width: 48%;
+}
+
+.search-container input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    outline: none;
+}
+
+
+
+
+/* Colores de estado de pago */
+.status-pendiente {
+    background-color: #ffeb3b; /* Amarillo */
+    color: #000000;
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 6px 15px;
+}
+
+.status-realizado {
+    background-color: #28a745; /* Verde */
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 6px 15px;
+}
+
+.status-Fallido {
+    background-color: #f44336; /* Rojo */
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    border-radius: 5px;
+    padding: 6px 15px;
+}
+
+/* Ajustes visuales adicionales */
+.table-container {
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+}
+
+/* Adaptaciones de responsividad */
+@media (max-width: 768px) {
+    .table th, .table td {
+        padding: 50px;
+        font-size: 12px;
+    }
+
+    .btn-refresh {
+        width: 100%;
+        padding: 100px;
+        font-size: 4px;
+    }
+
+    .search-container input {
+        width: 120%;
+    }
+}
+/* Adaptaciones de responsividad */
+@media (max-width: 768px) {
+    .btn-refresh {
+        font-size: 16px;
+        padding: 10px;
+    }
+
+    .filter-container {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .filter-container select,
+    .filter-container input {
+        width: 100%;
+        margin-bottom: 12px;
+        padding: 10px;
+    }
+
+    .table th, .table td {
+        padding: 8px;
+        font-size: 12px;
+    }
+
+    .card {
+        padding: 15px;
+    }
+
+    /* Mostrar 2 personas por fila en móviles */
+    .table-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+
+    .payment-item {
+        width: 48%;
+        margin-bottom: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        background-color: white;
+        padding: 15px;
+    }
+
+    .payment-item h6 {
+        margin-top: 0;
+    }
+
+    .payment-item .status {
+        font-weight: bold;
+        padding: 5px 10px;
+        border-radius: 5px;
+    }
+}
+
+@media (max-width: 480px) {
+   
+    .btn-refresh {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    .table th, .table td {
+        font-size: 30px;
+        padding: 6px;
+    }
+
+    .payment-item {
+        width: 100%;
+    }
+}
+
+#event-calendar {
+    margin-top: 20px;
+}
+
+#event-calendar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+#event-calendar li {
+    padding: 5px;
+    background-color: #e9ecef;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+#event-calendar hr {
+    margin: 20px 0;
+}

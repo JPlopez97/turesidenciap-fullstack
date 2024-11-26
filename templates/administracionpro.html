@@ -15,7 +15,7 @@
 </head>
 <body class="main-layout in_page">
 
-{% extends "base.html" %}
+{% extends "base_pro.html" %}
 {% block content %}
 
 
@@ -69,44 +69,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Generar PDF</button>
     </form>
-</div>
-
-<div class="upload-section">
-    <div class="container mt-5">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Subir Información Contable</h2>
-                <p class="section-description">Sube los archivos contables para que los propietarios puedan verlos.</p>
-            </div>
-        </div>
-        <form id="uploadForm" onsubmit="uploadFile(event)">
-            <div class="row">
-                <div class="col-md-6">
-                    <label for="fileInput">Seleccionar archivo:</label>
-                    <input type="file" id="fileInput" class="form-control" required>
-                </div>
-                <div class="col-md-6">
-                    <label for="fileDescription">Descripción del archivo:</label>
-                    <input type="text" id="fileDescription" class="form-control" required>
-                </div>
-            </div>
-            <button type="submit" class="btn btn-primary mt-4">Subir Archivo</button>
-        </form>
-    </div>
-</div>
-
-<!-- Sección para mostrar archivos subidos -->
-<div class="files-section mt-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <h2>Archivos Subidos</h2>
-                <ul id="fileList" class="list-group">
-                    <!-- Aquí se mostrarán los archivos subidos -->
-                </ul>
-            </div>
-        </div>
-    </div>
 </div>
 
 <div class="floating-button">

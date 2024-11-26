@@ -6,7 +6,7 @@ from models import Usuario, Apartamento, Residente
 from fastapi.templating import Jinja2Templates
 from fastapi.staticfiles import StaticFiles
 
-router = APIRouter(tags=["register"], responses={404: {"message": "No encontrado"}})
+getResidentAvailableApartmentsrouter = APIRouter(tags=["register"], responses={404: {"message": "No encontrado"}})
 
 # Configuración de Jinja2 para trabajar con templates HTML en la carpeta "templates"
 templates = Jinja2Templates(directory="templates")
@@ -19,7 +19,7 @@ def get_db():
     finally:
         db.close()
 
-@router.get("/templateApartmentsDispo", response_class=HTMLResponse)
+@getResidentAvailableApartmentsrouter.get("/templateApartmentsDispo", response_class=HTMLResponse)
 async def templateApartmentsDispo(request: Request, db: Session = Depends(get_db)):
     apartamentos = db.query(Apartamento).filter(Apartamento.estado_apto == 'disponible').all()
     residentes = db.query(Residente.cc_usuario, Usuario.nombre_usu).join(Usuario, Residente.cc_usuario == Usuario.cc_usuario).filter(Residente.id_apto == None).all()
@@ -42,11 +42,12 @@ async def templateApartmentsDispo(request: Request, db: Session = Depends(get_db
         "apartamentos": apartamentos,
         "noResidentDispo": noResidentDispo,
         "noApartDispo": noApartDispo,
-        "disableButton": disableButton
+        "disableButton": disableButton, 
+        "active_page": request.url.path
     })
 
 
-@router.post("/assign_apartment", response_class=HTMLResponse)
+@getResidentAvailableApartmentsrouter.post("/assign_apartment", response_class=HTMLResponse)
 async def assignApartment(
     cc_usuario: int = Form(...),
     id_apto: int = Form(...),
